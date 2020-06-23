@@ -7,6 +7,7 @@ ADDR = (SERVER, PORT)
 
 server = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 server.bind(ADDR)
+server.listen()
 
 def handle_client(c, a):
     c.send("testing here btw")
@@ -17,3 +18,5 @@ def start():
         c, a = server.accept()
         thread = threading.Thread(target=handle_client, args=(c, a))
         thread.start()
+    
+start()
