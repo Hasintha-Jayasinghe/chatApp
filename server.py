@@ -1,15 +1,14 @@
 import socket
 import threading
+import os
 
 SERVER = '0.0.0.0'
-PORT = 43908
+PORT = os.environ['PORT']
 ADDR = (SERVER, PORT)
-
-print(socket.gethostbyname(socket.gethostname()))
 
 server = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 server.bind(ADDR)
-server.listen()
+server.listen(3)
 
 def handle_client(c, a):
     c.send(bytes("testing here btw", 'utf-8'))
