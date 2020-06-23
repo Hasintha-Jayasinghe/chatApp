@@ -5,6 +5,8 @@ SERVER = '0.0.0.0'
 PORT = 43908
 ADDR = (SERVER, PORT)
 
+print(socket.gethostbyname(socket.gethostname()))
+
 server = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 server.bind(ADDR)
 server.listen()
