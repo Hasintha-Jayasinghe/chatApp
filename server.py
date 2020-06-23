@@ -17,6 +17,7 @@ def handle_client(c, a):
 def start():
     while True:
         c, a = server.accept()
+        print(c)
         thread = threading.Thread(target=handle_client, args=(c, a))
         thread.start()
     
