@@ -2,7 +2,7 @@ import socket
 import threading
 
 SERVER = '0.0.0.0'
-PORT = 2007
+PORT = 80
 ADDR = (SERVER, PORT)
 
 server = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
