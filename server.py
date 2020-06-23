@@ -10,7 +10,7 @@ server.bind(ADDR)
 server.listen()
 
 def handle_client(c, a):
-    c.send("testing here btw")
+    c.send(bytes("testing here btw", 'utf-8'))
     c.close()
 
 def start():
