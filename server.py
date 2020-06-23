@@ -11,6 +11,7 @@ server.bind(ADDR)
 server.listen(3)
 
 def handle_client(c, a):
+    print("Sending")
     c.send(bytes("testing here btw", 'utf-8'))
     c.close()
 
