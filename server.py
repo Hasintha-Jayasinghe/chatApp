@@ -1,7 +1,7 @@
 import socket
 import threading
 
-SERVER = '0.0.0.0'
+SERVER = 'https://socketserverhj.herokuapp.com/'
 PORT = 2007
 ADDR = (SERVER, PORT)
 
