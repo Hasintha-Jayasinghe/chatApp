@@ -1,6 +1,6 @@
 import socket
 
-server = 'https://socketserverhj.herokuapp.com/'
+server = 'wss://socketserverhj.herokuapp.com/0.0.0.0'
 port = 2007
 
 client = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
