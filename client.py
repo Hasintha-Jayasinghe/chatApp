@@ -1,6 +1,6 @@
 import socket
 
-server = 'https://socketserverhj.herokuapp.com:80/'
+server = '172.17.140.46'
 port = 43908
 
 client = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
