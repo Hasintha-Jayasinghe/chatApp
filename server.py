@@ -4,7 +4,7 @@ import os
 
 SERVER = '0.0.0.0'
 PORT = os.environ['PORT']
-ADDR = (SERVER, PORT)
+ADDR = (SERVER, int(PORT))
 
 server = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 server.bind(ADDR)
