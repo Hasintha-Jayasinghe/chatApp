@@ -1,8 +1,8 @@
 import socket
 import threading
 
-IP = '0.0.0.0'
-PORT = 2007
+IP = ''
+PORT = 443
 FORMAT = 'utf-8'
 HEADER_LENGTH = 1020
 
@@ -28,15 +28,18 @@ def handler(conn, a):
                 c.send(bytes(nickname + ": " + msg, FORMAT))
             
             if msg == 'QUIT':
+                connected_user_names.remove(nickname)
+                connected_addrs.remove(conn)
                 connected = False
         except Exception as e:
             print("ERROR")
             print(e)
-            connected = False
+            conn.close()
     
     conn.close()
 
 def start():
+    print("STARTING SERVER ON IP/HOST: " + IP)
     while True:
         conn, a = server.accept()
         thread = threading.Thread(target=handler, args=(conn, a))
