@@ -1,20 +1,45 @@
 import socket
 import threading
-import os
 
-SERVER = '0.0.0.0'
-PORT = os.environ['PORT']
-ADDR = (SERVER, int(PORT))
+IP = '0.0.0.0'
+PORT = 2007
+FORMAT = 'utf-8'
+HEADER_LENGTH = 1020
 
 server = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-server.bind(ADDR)
-server.listen(3)
+server.bind((IP, PORT))
+server.listen()
 
+connected_user_names = []
+connected_addrs = []
+
+def handler(conn, a):
+    nickname = conn.recv(HEADER_LENGTH).decode(FORMAT)
+    connected_user_names.append(nickname)
+    connected_addrs.append(conn)
+    for c in connected_addrs:
+        c.send(bytes(f"{nickname} joined the chat. There are {len(connected_user_names)} people in the chat now", FORMAT))
+    connected = True
+    while connected:
+        try:
+            msg = conn.recv(HEADER_LENGTH).decode(FORMAT)
+
+            for c in connected_addrs:
+                c.send(bytes(nickname + ": " + msg, FORMAT))
+            
+            if msg == 'QUIT':
+                connected = False
+        except Exception as e:
+            print("ERROR")
+            print(e)
+            connected = False
+    
+    conn.close()
 
 def start():
     while True:
-        c, a = server.accept()
-        print(a)
-        c.send(bytes('testing', 'utf-8'))
-    
+        conn, a = server.accept()
+        thread = threading.Thread(target=handler, args=(conn, a))
+        thread.start()
+
 start()
