@@ -20,6 +20,7 @@ def handler(conn, a):
     connected_addrs.append(conn)
     for c in connected_addrs:
         c.send(bytes(f"{nickname} joined the chat. There are {len(connected_user_names)} people in the chat now", FORMAT))
+        print(f"{nickname} joined the chat. There are {len(connected_user_names)} people in the chat now")
     connected = True
     while connected:
         try:
