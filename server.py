@@ -3,9 +3,10 @@ import threading
 import os
 
 IP = ''
-PORT = os.environ['PORT'] or 2007
+PORT = os.environ['PORT']
 FORMAT = 'utf-8'
 HEADER_LENGTH = 1020
+print(PORT)
 
 server = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 server.bind((IP, int(PORT)))
