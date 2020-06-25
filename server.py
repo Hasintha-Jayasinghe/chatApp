@@ -3,7 +3,7 @@ import threading
 import os
 
 IP = ''
-PORT = os.environ['PORT']
+PORT = 2007
 FORMAT = 'utf-8'
 HEADER_LENGTH = 1020
 print(PORT)
