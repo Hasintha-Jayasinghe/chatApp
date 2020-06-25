@@ -5,7 +5,7 @@ from tkinter import *
 
 IP = '192.168.1.92'
 IP2 = 'socketserverhj.herokuapp.com'
-PORT = 443
+PORT = 80
 HEADER_LENGTH = 1020
 FORMAT = 'utf-8'
 
