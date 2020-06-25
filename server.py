@@ -2,12 +2,12 @@ import socket
 import threading
 
 IP = ''
-PORT = 443
+PORT = 2007
 FORMAT = 'utf-8'
 HEADER_LENGTH = 1020
 
 server = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-server.bind((IP, PORT))
+server.bind((IP, int(PORT)))
 server.listen()
 
 connected_user_names = []
